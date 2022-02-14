@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+set -e
+
+selenium-side-runner \
+-c "browserName=chrome goog:chromeOptions.args=[disable-infobars, headless, no-sandbox, disable-dev-shm-usage]" \
+"$@"

@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+set -e
+
+selenium-side-runner \
+-c "browserName=firefox moz:firefoxOptions.args=[-headless]" \
+"$@"
