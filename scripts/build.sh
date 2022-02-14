@@ -16,7 +16,7 @@ readonly BASE_DIR="$(
 pushd "${BASE_DIR}" >/dev/null
 
 DOCKER_REGISTRY="docker.io"
-IMAGE_BASE="${DOCKER_REGISTRY}/rewardenv"
+IMAGE_BASE="${DOCKER_REGISTRY}/szike"
 
 function print_usage() {
   echo "build.sh [--push] [--dry-run] <IMAGE_TYPE>"
@@ -53,7 +53,7 @@ while getopts "pnh" opt; do
 done
 shift "$((OPTIND - 1))"
 
-FROM_IMAGE="rewardenv/docker-toolbox"
+FROM_IMAGE="szike/selenium-side-runner"
 FROM_TAG="$(echo "${DOCKER_BASE_IMAGE}" | sed -e 's/:/-/g')"
 ORIGIN_IMAGE="$(echo "${DOCKER_BASE_IMAGE}" | cut -d: -f1)"
 ORIGIN_TAG="$(echo "${DOCKER_BASE_IMAGE}" | cut -d: -f2)"
@@ -85,7 +85,7 @@ function docker_login() {
 
 function build_image() {
   BUILD_DIR="$(dirname "${file}")"
-  IMAGE_NAME="docker-toolbox-ansible"
+  IMAGE_NAME="selenium-side-runner"
   IMAGE_TAG="${IMAGE_BASE}/${IMAGE_NAME}"
   TAG_SUFFIX="${ORIGIN_IMAGE}-${ORIGIN_TAG}"
 
